@@ -62,13 +62,14 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Senso-ji, Asakusa", lat: 35.7147651, lng: 139.7966553, n: 1},
-{name: "Ameyoko Market", lat: 35.7100682, lng: 139.7746009, n: 2},
-{name: "Akihabara", lat: 35.6996473, lng: 139.7713703, n: 3}];
+  var pts = [{name: "Senso-ji, Asakusa", lat: 35.7147651, lng: 139.7966553, address: "2-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan", placeId: "ChIJ8T1GpMGOGGARDYGSgpooDWw", n: 1},
+{name: "Ameyoko Market", lat: 35.7100682, lng: 139.7746009, address: "6-10-7 Ueno, Taito City, Tokyo 110-0005, Japan", placeId: "ChIJh7eDrwCPGGARCs9fpCkKS2U", n: 2},
+{name: "Akihabara", lat: 35.6996473, lng: 139.7713703, address: "Akihabara, Chiyoda City, Tokyo, Japan", placeId: "ChIJzdWdgh2MGGARh4kg2pVZL3c", n: 3}];
   var map = L.map('map-day-13', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -77,9 +78,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

@@ -62,15 +62,16 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Kiyomizu-dera", lat: 34.9946662, lng: 135.784661, n: 1},
-{name: "Sannenzaka", lat: 34.9966644, lng: 135.781008, n: 2},
-{name: "Yasaka Shrine", lat: 35.0036559, lng: 135.7785534, n: 3},
-{name: "Gion", lat: 35.0037816, lng: 135.777245, n: 4},
-{name: "Pontocho", lat: 35.0064277, lng: 135.7712162, n: 5}];
+  var pts = [{name: "Kiyomizu-dera", lat: 34.9946662, lng: 135.784661, address: "1-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJB_vchdMIAWARujTEUIZlr2I", n: 1},
+{name: "Sannenzaka", lat: 34.9966644, lng: 135.781008, address: "2-211 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJr_gZonkIAWARB1xyACZNUKM", n: 2},
+{name: "Yasaka Shrine", lat: 35.0036559, lng: 135.7785534, address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan", placeId: "ChIJqewQoHkIAWAR6RokWp3Iesc", n: 3},
+{name: "Gion", lat: 35.0037816, lng: 135.777245, address: "Gion, Higashiyama Ward, Kyoto, Japan", placeId: "ChIJZ3vGwcMIAWARtO-YE6oEyw0", n: 4},
+{name: "Pontocho", lat: 35.0064277, lng: 135.7712162, address: "Pontocho, Nakagyo Ward, Kyoto, 604-8012, Japan", placeId: "ChIJCQK3LesIAWAR3CST8e-1YRA", n: 5}];
   var map = L.map('map-day-5', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -79,9 +80,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

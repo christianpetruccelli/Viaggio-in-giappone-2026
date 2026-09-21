@@ -62,14 +62,15 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Hiroshima Peace Memorial Museum", lat: 34.3915027, lng: 132.4531578, n: 1},
-{name: "Atomic Bomb Dome", lat: 34.395483, lng: 132.453592, n: 2},
-{name: "Peace Memorial Park", lat: 34.3926867, lng: 132.4522012, n: 3},
-{name: "Itsukushima Jinja, Miyajima", lat: 34.2959896, lng: 132.3198285, n: 4}];
+  var pts = [{name: "Hiroshima Peace Memorial Museum", lat: 34.3915027, lng: 132.4531578, address: "1-2 Nakajimacho, Naka Ward, Hiroshima, 730-0811, Japan", placeId: "ChIJtyvayxKiWjURgIGSanFnMPE", n: 1},
+{name: "Atomic Bomb Dome", lat: 34.395483, lng: 132.453592, address: "1-1-10 Otemachi, Naka Ward, Hiroshima, 730-0051, Japan", placeId: "ChIJqYAn2wyiWjURlsDG4Hpn5jQ", n: 2},
+{name: "Peace Memorial Park", lat: 34.3926867, lng: 132.4522012, address: "1 Nakajimacho, Naka Ward, Hiroshima, 730-0811, Japan", placeId: "ChIJgzAzVG2iWjURZRZ1udXOKeE", n: 3},
+{name: "Itsukushima Jinja, Miyajima", lat: 34.2959896, lng: 132.3198285, address: "1-1 Miyajimacho, Hatsukaichi, Hiroshima 739-0588, Japan", placeId: "ChIJj23HfgTjGmARkNW10PcocjU", n: 4}];
   var map = L.map('map-day-3', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -78,9 +79,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

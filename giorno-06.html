@@ -62,15 +62,16 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Arashiyama Bamboo Forest", lat: 35.0168187, lng: 135.6713013, n: 1},
-{name: "Tenryu-ji", lat: 35.0158379, lng: 135.6737654, n: 2},
-{name: "Togetsukyo Bridge", lat: 35.0128769, lng: 135.6777748, n: 3},
-{name: "Kinkaku-ji", lat: 35.03937, lng: 135.7292431, n: 4},
-{name: "Ryoan-ji", lat: 35.0344943, lng: 135.7182634, n: 5}];
+  var pts = [{name: "Arashiyama Bamboo Forest", lat: 35.0168187, lng: 135.6713013, address: "Sagaogurayama Tabuchiyamacho, Ukyo Ward, Kyoto, 616-8394, Japan", placeId: "ChIJrYtcv-urAWAR3XzWvXv8n_s", n: 1},
+{name: "Tenryu-ji", lat: 35.0158379, lng: 135.6737654, address: "68 Sagatenryuji Susukinobabacho, Ukyo Ward, Kyoto, 616-8385, Japan", placeId: "ChIJk54PuAGqAWARwEgz_9o-nM0", n: 2},
+{name: "Togetsukyo Bridge", lat: 35.0128769, lng: 135.6777748, address: "1-5 Sagatenryuji Susukinobabacho, Ukyo Ward, Kyoto, 616-8384, Japan", placeId: "ChIJd2mRAFMHAWARPSiWJOj4FOw", n: 3},
+{name: "Kinkaku-ji", lat: 35.03937, lng: 135.7292431, address: "1 Kinkakujicho, Kita Ward, Kyoto, 603-8361, Japan", placeId: "ChIJvUbrwCCoAWARX2QiHCsn5A4", n: 4},
+{name: "Ryoan-ji", lat: 35.0344943, lng: 135.7182634, address: "13 Ryoanji Goryonoshitacho, Ukyo Ward, Kyoto, 616-8001, Japan", placeId: "ChIJp7ocMCqoAWARQoXXRj4Xq-E", n: 5}];
   var map = L.map('map-day-6', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -79,9 +80,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

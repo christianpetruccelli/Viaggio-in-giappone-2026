@@ -62,13 +62,14 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "JR Miyajima Ferry", lat: 34.3112221, lng: 132.3048829, n: 1},
-{name: "Nijo Castle", lat: 35.0140379, lng: 135.7484258, n: 2},
-{name: "Kyoto Sanjo Shopping Street", lat: 35.0084387, lng: 135.7464002, n: 3}];
+  var pts = [{name: "JR Miyajima Ferry", lat: 34.3112221, lng: 132.3048829, address: "1-11-5 Miyajimaguchi, Hatsukaichi, Hiroshima 739-0411, Japan", placeId: "ChIJEyVAcGeiWjURsvzk9FaO6Ao", n: 1},
+{name: "Nijo Castle", lat: 35.0140379, lng: 135.7484258, address: "541 Nijojocho, Nakagyo Ward, Kyoto, 604-8301, Japan", placeId: "ChIJC5srCtQHAWARLy9qkFmHaxA", n: 2},
+{name: "Kyoto Sanjo Shopping Street", lat: 35.0084387, lng: 135.7464002, address: "1-1 Imashinzaikenishicho, Nakagyo Ward, Kyoto, 604-8801, Japan", placeId: "ChIJ5yNcECoGAWARjb3yfogbshY", n: 3}];
   var map = L.map('map-day-4', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -77,9 +78,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

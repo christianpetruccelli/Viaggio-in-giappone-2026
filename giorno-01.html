@@ -62,14 +62,15 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Kansai International Airport", lat: 34.431999399999995, lng: 135.23660189999998, n: 1},
-{name: "Namba Station", lat: 34.6629331, lng: 135.5022953, n: 2},
-{name: "Hozen-ji", lat: 34.6679398, lng: 135.5024676, n: 3},
-{name: "Dotonbori", lat: 34.6686471, lng: 135.5030983, n: 4}];
+  var pts = [{name: "Kansai International Airport", lat: 34.4319994, lng: 135.2366019, address: "1 Senshu Kuko Kita, Izumisano, Osaka 549-0001, Japan", placeId: "ChIJ9_rNIxO5AGARiI-QjZ-ncfE", n: 1},
+{name: "Namba Station", lat: 34.6629331, lng: 135.5022953, address: "5-10-1 Namba, Chuo Ward, Osaka, 542-8503, Japan", placeId: "ChIJpdNZi2vnAGARJ8KqytmSHXw", n: 2},
+{name: "Hozen-ji", lat: 34.6679398, lng: 135.5024676, address: "1-2-16 Namba, Chuo Ward, Osaka, 542-0076, Japan", placeId: "ChIJI7QyuRTnAGARU28-XLGEOfU", n: 3},
+{name: "Dotonbori", lat: 34.6686471, lng: 135.5030983, address: "Dotonbori, Chuo Ward, Osaka, 542-0071, Japan", placeId: "ChIJg2DcJhXnAGARCbeAHoZrPeQ", n: 4}];
   var map = L.map('map-day-1', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -78,9 +79,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

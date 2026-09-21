@@ -62,15 +62,16 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "teamLab Planets TOKYO", lat: 35.6491207, lng: 139.7897739, n: 1},
-{name: "DiverCity Tokyo Plaza, Odaiba", lat: 35.6247851, lng: 139.7758551, n: 2},
-{name: "Ginza", lat: 35.6712228, lng: 139.7664859, n: 3},
-{name: "Tokyo Tower", lat: 35.6585805, lng: 139.7454329, n: 4},
-{name: "Azabu-Juban", lat: 35.6546541, lng: 139.7351855, n: 5}];
+  var pts = [{name: "teamLab Planets TOKYO", lat: 35.6491207, lng: 139.7897739, address: "6-1-16 Toyosu, Koto City, Tokyo 135-0061, Japan", placeId: "ChIJSeco5wiJGGARItbTS8lQ5G0", n: 1},
+{name: "DiverCity Tokyo Plaza, Odaiba", lat: 35.6247851, lng: 139.7758551, address: "1-1-10 Aomi, Koto City, Tokyo 135-0064, Japan", placeId: "ChIJpbpu0_mJGGARd9sJ-psh9Gc", n: 2},
+{name: "Ginza", lat: 35.6712228, lng: 139.7664859, address: "Ginza, Chuo City, Tokyo 104-0061, Japan", placeId: "ChIJu2-DAeeLGGARUZipC7OFRmA", n: 3},
+{name: "Tokyo Tower", lat: 35.6585805, lng: 139.7454329, address: "4-2-8 Shibakoen, Minato City, Tokyo 105-0011, Japan", placeId: "ChIJCewJkL2LGGAR3Qmk0vCTGkg", n: 4},
+{name: "Azabu-Juban", lat: 35.6546541, lng: 139.7351855, address: "Azabujuban, Minato City, Tokyo 106-0045, Japan", placeId: "ChIJa83EfZ-LGGARHbrRcVb6_8s", n: 5}];
   var map = L.map('map-day-12', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -79,9 +80,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

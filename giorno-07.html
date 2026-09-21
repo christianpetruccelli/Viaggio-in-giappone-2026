@@ -62,13 +62,14 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Fushimi Inari Taisha", lat: 34.9676945, lng: 135.7791876, n: 1},
-{name: "Uji", lat: 34.8845134, lng: 135.7997037, n: 2},
-{name: "Byodo-in Temple", lat: 34.8892908, lng: 135.8076783, n: 3}];
+  var pts = [{name: "Fushimi Inari Taisha", lat: 34.9676945, lng: 135.7791876, address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan", placeId: "ChIJIW0uPRUPAWAR6eI6dRzKGns", n: 1},
+{name: "Uji", lat: 34.8845134, lng: 135.7997037, address: "Uji, Kyoto, Japan", placeId: "ChIJ7VMo54QRAWAR3t1BYKpGatY", n: 2},
+{name: "Byodo-in Temple", lat: 34.8892908, lng: 135.8076783, address: "Renge 116, Uji, Kyoto 611-0021, Japan", placeId: "ChIJqyva4AwRAWARpAf6j5MUhGA", n: 3}];
   var map = L.map('map-day-7', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -77,9 +78,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });

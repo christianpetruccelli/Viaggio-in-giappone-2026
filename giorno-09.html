@@ -62,15 +62,16 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Kenroku-en", lat: 36.5621278, lng: 136.6626515, n: 1},
-{name: "Kanazawa Castle Park", lat: 36.5659458, lng: 136.6588451, n: 2},
-{name: "Nagamachi Samurai District", lat: 36.5637517, lng: 136.6510146, n: 3},
-{name: "Omicho Market", lat: 36.5717335, lng: 136.6558651, n: 4},
-{name: "Higashi Chaya District", lat: 36.5725825, lng: 136.6665601, n: 5}];
+  var pts = [{name: "Kenroku-en", lat: 36.5621278, lng: 136.6626515, address: "1 Kenrokumachi, Kanazawa, Ishikawa 920-0936, Japan", placeId: "ChIJBVmy-YMz-F8R5PID8D17Cpc", n: 1},
+{name: "Kanazawa Castle Park", lat: 36.5659458, lng: 136.6588451, address: "1-1 Marunouchi, Kanazawa, Ishikawa 920-0937, Japan", placeId: "ChIJlUfxPYIz-F8RSh7ml54YJ6g", n: 2},
+{name: "Nagamachi Samurai District", lat: 36.5637517, lng: 136.6510146, address: "1-3-12-2 Nagamachi, Kanazawa, Ishikawa 920-0865, Japan", placeId: "ChIJhycOJtYz-F8RO54LaTG6_p0", n: 3},
+{name: "Omicho Market", lat: 36.5717335, lng: 136.6558651, address: "50 Kamiomicho, Kanazawa, Ishikawa 920-0905, Japan", placeId: "ChIJ0xPT93Az-F8RpTSlbHwo9L8", n: 4},
+{name: "Higashi Chaya District", lat: 36.5725825, lng: 136.6665601, address: "1-13 Higashiyama, Kanazawa, Ishikawa 920-0831, Japan", placeId: "ChIJsfC6oXQz-F8RdA1qXiF6jLs", n: 5}];
   var map = L.map('map-day-9', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: 'abcd',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -79,9 +80,10 @@
       className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
       iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
     });
-    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    var q = encodeURIComponent(p.name + ', ' + p.address);
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
-      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+      .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
   map.fitBounds(latlngs, { padding: [28, 28] });
