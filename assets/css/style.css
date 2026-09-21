@@ -72,11 +72,12 @@ li > ul, li > ol{ margin-top: .5em; }
 strong{ font-weight: 600; }
 
 mark{
-  background: none;
+  background: #F0CE84;
   color: var(--ink);
-  background-image: linear-gradient(transparent 62%, var(--vermilion-soft) 62%);
-  padding: 0 .1em;
-  border-radius: 1px;
+  padding: .08em .35em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 hr{ border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
@@ -304,6 +305,20 @@ hr{ border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
   transform: rotate(-45deg); box-shadow: 0 2px 5px rgba(0,0,0,.35);
 }
 .map-pin span{ transform: rotate(45deg); }
+
+.day-map .map-label{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: .74rem;
+  font-weight: 600;
+  padding: .15em .5em;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.18);
+  white-space: nowrap;
+}
+.day-map .map-label::before{ display: none; }
 
 .day-content{ max-width: var(--content-w); margin: 0 auto; padding: 0 1.5rem 4.5rem; }
 .day-content h2{ font-size: 1.05rem; margin-top: 2em; }

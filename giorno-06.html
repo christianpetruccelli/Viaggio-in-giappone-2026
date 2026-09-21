@@ -68,10 +68,9 @@
 {name: "Kinkaku-ji", lat: 35.03937, lng: 135.7292431, address: "1 Kinkakujicho, Kita Ward, Kyoto, 603-8361, Japan", placeId: "ChIJvUbrwCCoAWARX2QiHCsn5A4", n: 4},
 {name: "Ryoan-ji", lat: 35.0344943, lng: 135.7182634, address: "13 Ryoanji Goryonoshitacho, Ukyo Ward, Kyoto, 616-8001, Japan", placeId: "ChIJp7ocMCqoAWARQoXXRj4Xq-E", n: 5}];
   var map = L.map('map-day-6', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-    maxZoom: 20,
-    subdomains: 'abcd',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
   var latlngs = [];
   pts.forEach(function(p) {
@@ -83,6 +82,7 @@
     var q = encodeURIComponent(p.name + ', ' + p.address);
     var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + q + '&query_place_id=' + p.placeId;
     L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
+      .bindTooltip(p.n + '. ' + p.name, { permanent: true, direction: 'top', offset: [0, -26], className: 'map-label' })
       .bindPopup('<strong>' + p.name + '</strong><span class="pin-addr">' + p.address + '</span><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
   });
   L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
