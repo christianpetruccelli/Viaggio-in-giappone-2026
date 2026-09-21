@@ -283,6 +283,27 @@ hr{ border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
 }
 .badge .lbl{ color: var(--gold); font-weight: 600; }
 
+.day-map-wrap{ max-width: var(--content-w); margin: 0 auto 2rem; padding: 0 1.5rem; }
+.day-map{
+  height: 340px; width: 100%; border-radius: 4px; border: 1px solid var(--line);
+  background: var(--paper-deep);
+}
+.day-map .leaflet-popup-content-wrapper{ border-radius: 3px; font-family: var(--font-body); }
+.day-map .leaflet-popup-content{ margin: .7em .9em; font-size: .87rem; }
+.day-map .leaflet-popup-content strong{ display: block; font-family: var(--font-display); font-size: 1rem; margin-bottom: .3em; }
+.day-map .leaflet-popup-content a{ color: var(--vermilion); text-decoration: none; font-size: .82rem; }
+.day-map .leaflet-popup-content a:hover{ text-decoration: underline; }
+.day-map-caption{ font-size: .78rem; color: var(--ink-soft); margin-top: .6em; text-align: right; }
+.day-map-caption a{ color: var(--ink-soft); }
+.map-pin{
+  display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50% 50% 50% 0;
+  background: var(--vermilion); border: 2px solid var(--paper);
+  color: var(--paper); font-family: var(--font-body); font-weight: 700; font-size: .75rem;
+  transform: rotate(-45deg); box-shadow: 0 2px 5px rgba(0,0,0,.35);
+}
+.map-pin span{ transform: rotate(45deg); }
+
 .day-content{ max-width: var(--content-w); margin: 0 auto; padding: 0 1.5rem 4.5rem; }
 .day-content h2{ font-size: 1.05rem; margin-top: 2em; }
 .day-content > p:first-child{ display: none; } /* pernottamento già in badge */

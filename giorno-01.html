@@ -8,6 +8,8 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
 <header class="site-header">
@@ -54,7 +56,36 @@
   <div class="day-badges">
     <span class="badge"><span class="lbl">Pernottamento</span> Osaka, Hotel Forza Namba (1-chōme-4-22 Dōtonbori)</span>
   </div>
-</div><div class="day-content"><p><strong>Pernottamento:</strong> Osaka, Hotel Forza Namba (<a class="ext" href="https://maps.app.goo.gl/pt2gbAsP7BQQPi657" rel="noopener noreferrer" target="_blank">1-chōme-4-22
+</div><div class="day-map-wrap">
+  <div id="map-day-1" class="day-map"></div>
+  <div class="day-map-caption">Tocca un segnaposto per aprirlo in Google Maps</div>
+</div>
+<script>
+(function() {
+  var pts = [{name: "Kansai International Airport", lat: 34.431999399999995, lng: 135.23660189999998, n: 1},
+{name: "Namba Station", lat: 34.6629331, lng: 135.5022953, n: 2},
+{name: "Hozen-ji", lat: 34.6679398, lng: 135.5024676, n: 3},
+{name: "Dotonbori", lat: 34.6686471, lng: 135.5030983, n: 4}];
+  var map = L.map('map-day-1', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  var latlngs = [];
+  pts.forEach(function(p) {
+    latlngs.push([p.lat, p.lng]);
+    var icon = L.divIcon({
+      className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
+      iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
+    });
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
+      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+  });
+  L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
+  map.fitBounds(latlngs, { padding: [28, 28] });
+})();
+</script><div class="day-content"><p><strong>Pernottamento:</strong> Osaka, Hotel Forza Namba (<a class="ext" href="https://maps.app.goo.gl/pt2gbAsP7BQQPi657" rel="noopener noreferrer" target="_blank">1-chōme-4-22
 Dōtonbori</a>)</p><p><strong>Riassunto della giornata:</strong> Arrivo a Kansai,
 trasferimento a Namba e primo orientamento serale.</p><div class="table-wrap"><table>
 <colgroup>

@@ -8,6 +8,8 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
 <header class="site-header">
@@ -54,7 +56,35 @@
   <div class="day-badges">
     <span class="badge"><span class="lbl">Pernottamento</span> Takayama, Sumiya Seika Apartment (2-chōme-36-2 Wakatatsumachi)</span>
   </div>
-</div><div class="day-content"><p><strong>Pernottamento:</strong> Takayama, Sumiya Seika Apartment
+</div><div class="day-map-wrap">
+  <div id="map-day-10" class="day-map"></div>
+  <div class="day-map-caption">Tocca un segnaposto per aprirlo in Google Maps</div>
+</div>
+<script>
+(function() {
+  var pts = [{name: "Kanazawa Station", lat: 36.5780443, lng: 136.6481714, n: 1},
+{name: "Ogimachi, Shirakawa-go", lat: 36.2634642, lng: 136.9274719, n: 2},
+{name: "Sanmachi Suji, Takayama", lat: 36.1413161, lng: 137.2596227, n: 3}];
+  var map = L.map('map-day-10', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  var latlngs = [];
+  pts.forEach(function(p) {
+    latlngs.push([p.lat, p.lng]);
+    var icon = L.divIcon({
+      className: '', html: '<div class="map-pin"><span>' + p.n + '</span></div>',
+      iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
+    });
+    var gmaps = 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng;
+    L.marker([p.lat, p.lng], { icon: icon }).addTo(map)
+      .bindPopup('<strong>' + p.name + '</strong><a href="' + gmaps + '" target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>');
+  });
+  L.polyline(latlngs, { color: '#B8431F', weight: 2, opacity: .55, dashArray: '5,7' }).addTo(map);
+  map.fitBounds(latlngs, { padding: [28, 28] });
+})();
+</script><div class="day-content"><p><strong>Pernottamento:</strong> Takayama, Sumiya Seika Apartment
 (2-chōme-36-2 Wakatatsumachi)</p><p><strong>Riassunto della giornata:</strong> Trasferimento panoramico
 in bus attraverso Shirakawa-go</p><div class="table-wrap"><table>
 <colgroup>
