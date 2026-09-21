@@ -62,12 +62,14 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Namba Yasaka Jinja", lat: 34.6615592, lng: 135.4967039, address: "2-9-19 Motomachi, Naniwa Ward, Osaka, 556-0016, Japan", placeId: "ChIJQVW9eXLnAGARn-pUdRl0w4A", n: 1},
-{name: "Osaka Castle", lat: 34.6872571, lng: 135.5258546, address: "1-1 Osakajo, Chuo Ward, Osaka, 540-0002, Japan", placeId: "ChIJ_TooXM3gAGARQR6hXH3QAQ8", n: 2},
-{name: "Shinsaibashisuji", lat: 34.6724248, lng: 135.5010362, address: "Shinsaibashisuji, Chuo Ward, Osaka, 542-0085, Japan", placeId: "ChIJcxIbNhHnAGARl8cKu_vPFMA", n: 3},
-{name: "Kuromon Market", lat: 34.6653511, lng: 135.5062417, address: "2-4-1 Nipponbashi, Chuo Ward, Osaka, 542-0073, Japan", placeId: "ChIJXSJB5UHnAGARQcEjvngsHaw", n: 4},
-{name: "Shinsekai", lat: 34.6516013, lng: 135.5059562, address: "2-5 Ebisuhigashi, Naniwa Ward, Osaka, 556-0002, Japan", placeId: "ChIJV6JXdmDnAGAR-9a4atjXsTY", n: 5},
-{name: "Abeno Harukas", lat: 34.6460706, lng: 135.5134771, address: "1-1-43 Abenosuji, Abeno Ward, Osaka, 545-6016, Japan", placeId: "ChIJed3mI_DdAGARJyFcpACSbwc", n: 6}];
+  var pts = [{name: "Hotel Forza Namba", lat: 34.6685723, lng: 135.5033617, address: "1-4-22 Dotonbori, Chuo Ward, Osaka 542-0071, Japan", placeId: "ChIJd7wiMgDnAGARgYlgLfCl7cQ", n: 1},
+{name: "Namba Yasaka Jinja", lat: 34.6615592, lng: 135.4967039, address: "2-9-19 Motomachi, Naniwa Ward, Osaka, 556-0016, Japan", placeId: "ChIJQVW9eXLnAGARn-pUdRl0w4A", n: 2},
+{name: "Osaka Castle", lat: 34.6872571, lng: 135.5258546, address: "1-1 Osakajo, Chuo Ward, Osaka, 540-0002, Japan", placeId: "ChIJ_TooXM3gAGARQR6hXH3QAQ8", n: 3},
+{name: "Shinsaibashisuji", lat: 34.6724248, lng: 135.5010362, address: "Shinsaibashisuji, Chuo Ward, Osaka, 542-0085, Japan", placeId: "ChIJcxIbNhHnAGARl8cKu_vPFMA", n: 4},
+{name: "Kuromon Market", lat: 34.6653511, lng: 135.5062417, address: "2-4-1 Nipponbashi, Chuo Ward, Osaka, 542-0073, Japan", placeId: "ChIJXSJB5UHnAGARQcEjvngsHaw", n: 5},
+{name: "Den-Den Town", lat: 34.6604678, lng: 135.5061904, address: "4-9-9 Nipponbashi, Naniwa Ward, Osaka 556-0005, Japan", placeId: "ChIJv6w_-2fnAGARH2p9wbwos3c", n: 6},
+{name: "Shinsekai", lat: 34.6516013, lng: 135.5059562, address: "2-5 Ebisuhigashi, Naniwa Ward, Osaka, 556-0002, Japan", placeId: "ChIJV6JXdmDnAGAR-9a4atjXsTY", n: 7},
+{name: "Abeno Harukas", lat: 34.6460706, lng: 135.5134771, address: "1-1-43 Abenosuji, Abeno Ward, Osaka, 545-6016, Japan", placeId: "ChIJed3mI_DdAGARJyFcpACSbwc", n: 8}];
   var map = L.map('map-day-2', { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -146,8 +148,7 @@ Coffee Dotonbori</a>, e visita al santuario con la grande testa di leone
 Station → Osaka Castle (~35 min)</p>
 <ul>
 <li><p>Daikokuchō (M21) → Hommachi (M18) (<span class="line-tag" style="--line-color:#E5171F">Midosuji Line</span>)</p></li>
-<li><p>Poi cambio: Hommachi (C16)→ Tanimachi 4-chome (C18) (Chuo
-Line)</p></li>
+<li><p>Poi cambio: Hommachi (C16)→ Tanimachi 4-chome (C18) (<span class="line-tag" style="--line-color:#009944">Chuo Line</span>)</p></li>
 <li><p>da Tanimachi 4-chome a piedi verso il castello (~15 min)</p></li>
 </ul></li>
 <li><p><strong>09:00–10:30 | Osaka Castle Park <mark>(SE PIOVE ANDARE A

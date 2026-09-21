@@ -62,9 +62,11 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Sanmachi Suji, Takayama", lat: 36.1413161, lng: 137.2596227, address: "Sanmachi Suji, Takayama, Gifu 506-0846, Japan", placeId: "ChIJczG1tNu6AmARjrgU-Yh3zH8", n: 1},
-{name: "Nagoya Station", lat: 35.170915, lng: 136.8815369, address: "1-1-4 Meieki, Nakamura Ward, Nagoya, Aichi 450-0002, Japan", placeId: "ChIJiYvXlOd2A2ARYxYm-Esg94E", n: 2},
-{name: "Shin-Okubo Station", lat: 35.7012459, lng: 139.7002258, address: "1-7 Hyakunincho, Shinjuku City, Tokyo 169-0073, Japan", placeId: "ChIJKUnkNy-NGGARRdVS60w64HA", n: 3}];
+  var pts = [{name: "Sakurayama Hachimangu Shrine", lat: 36.1481824, lng: 137.2602971, address: "178 Sakuramachi, Takayama, Gifu 506-0858, Japan", placeId: "ChIJed--1dO6AmAR6Ca1xs77IPI", n: 1},
+{name: "Sanmachi Suji, Takayama", lat: 36.1413161, lng: 137.2596227, address: "Sanmachi Suji, Takayama, Gifu 506-0846, Japan", placeId: "ChIJczG1tNu6AmARjrgU-Yh3zH8", n: 2},
+{name: "Takayama Station", lat: 36.1410762, lng: 137.2513645, address: "1-22-2 Showamachi, Takayama, Gifu 506-0053, Japan", placeId: "ChIJwQzRXCi7AmARWccmYfpezQQ", n: 3},
+{name: "Nagoya Station", lat: 35.170915, lng: 136.8815369, address: "1-1-4 Meieki, Nakamura Ward, Nagoya, Aichi 450-0002, Japan", placeId: "ChIJiYvXlOd2A2ARYxYm-Esg94E", n: 4},
+{name: "Shin-Okubo Station", lat: 35.7012459, lng: 139.7002258, address: "1-7 Hyakunincho, Shinjuku City, Tokyo 169-0073, Japan", placeId: "ChIJKUnkNy-NGGARRdVS60w64HA", n: 5}];
   var map = L.map('map-day-11', { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -214,11 +216,11 @@ bagagli</strong> (~40 min)</p>
 to Conventional Lines (non seguire le indicazioni “Exit”).</p></li>
 <li><p>Attraversa il Tokaido Shinkansen Transfer Gate.</p></li>
 <li><p>Una volta nell’area dei treni JR ordinari, segui i cartelli
-arancioni per Chūō Line – Platforms 1–2 direzione Shinjuku, Nakano,
+arancioni per <span class="line-tag" style="--line-color:#F15A22">Chūō Line</span> – Platforms 1–2 direzione Shinjuku, Nakano,
 Tachikawa &amp; Takao (i binari 1–2 sono sopraelevati e si trovano verso
 il lato Marunouchi, quindi devi attraversare buona parte della stazione
 provenendo dai binari Shinkansen sul lato Yaesu).</p></li>
-<li><p>Prendi qualsiasi treno ordinario della Chūō Line con fascia
+<li><p>Prendi qualsiasi treno ordinario della <span class="line-tag" style="--line-color:#F15A22">Chūō Line</span> con fascia
 arancione: Rapid, Chūō Special Rapid, Ōme Special Rapid. Tutti fermano a
 Shinjuku</p></li>
 <li><p>Tokyo (JC01) → Shinjuku (JC05) con JR Chuo Rapid, cartelli

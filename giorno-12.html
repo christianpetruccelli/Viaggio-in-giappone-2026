@@ -62,11 +62,13 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "teamLab Planets TOKYO", lat: 35.6491207, lng: 139.7897739, address: "6-1-16 Toyosu, Koto City, Tokyo 135-0061, Japan", placeId: "ChIJSeco5wiJGGARItbTS8lQ5G0", n: 1},
-{name: "DiverCity Tokyo Plaza, Odaiba", lat: 35.6247851, lng: 139.7758551, address: "1-1-10 Aomi, Koto City, Tokyo 135-0064, Japan", placeId: "ChIJpbpu0_mJGGARd9sJ-psh9Gc", n: 2},
-{name: "Ginza", lat: 35.6712228, lng: 139.7664859, address: "Ginza, Chuo City, Tokyo 104-0061, Japan", placeId: "ChIJu2-DAeeLGGARUZipC7OFRmA", n: 3},
-{name: "Tokyo Tower", lat: 35.6585805, lng: 139.7454329, address: "4-2-8 Shibakoen, Minato City, Tokyo 105-0011, Japan", placeId: "ChIJCewJkL2LGGAR3Qmk0vCTGkg", n: 4},
-{name: "Azabu-Juban", lat: 35.6546541, lng: 139.7351855, address: "Azabujuban, Minato City, Tokyo 106-0045, Japan", placeId: "ChIJa83EfZ-LGGARHbrRcVb6_8s", n: 5}];
+  var pts = [{name: "Appartamento (Shin-Okubo)", lat: 35.7012459, lng: 139.7002258, address: "1-7 Hyakunincho, Shinjuku City, Tokyo 169-0073, Japan", placeId: "ChIJKUnkNy-NGGARRdVS60w64HA", n: 1},
+{name: "teamLab Planets TOKYO", lat: 35.6491207, lng: 139.7897739, address: "6-1-16 Toyosu, Koto City, Tokyo 135-0061, Japan", placeId: "ChIJSeco5wiJGGARItbTS8lQ5G0", n: 2},
+{name: "DiverCity Tokyo Plaza, Odaiba", lat: 35.6247851, lng: 139.7758551, address: "1-1-10 Aomi, Koto City, Tokyo 135-0064, Japan", placeId: "ChIJpbpu0_mJGGARd9sJ-psh9Gc", n: 3},
+{name: "Caretta Shiodome", lat: 35.6644594, lng: 139.7625223, address: "1-8-2 Higashishinbashi, Minato City, Tokyo 105-7090, Japan", placeId: "ChIJY7oGy8KLGGARwzg3K3wIBa8", n: 4},
+{name: "Ginza", lat: 35.6712228, lng: 139.7664859, address: "Ginza, Chuo City, Tokyo 104-0061, Japan", placeId: "ChIJu2-DAeeLGGARUZipC7OFRmA", n: 5},
+{name: "Tokyo Tower", lat: 35.6585805, lng: 139.7454329, address: "4-2-8 Shibakoen, Minato City, Tokyo 105-0011, Japan", placeId: "ChIJCewJkL2LGGAR3Qmk0vCTGkg", n: 6},
+{name: "Azabu-Juban", lat: 35.6546541, lng: 139.7351855, address: "Azabujuban, Minato City, Tokyo 106-0045, Japan", placeId: "ChIJa83EfZ-LGGARHbrRcVb6_8s", n: 7}];
   var map = L.map('map-day-12', { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -151,10 +153,8 @@ fino a Higashi-Shinjuku.</p></li>
 <li><p><strong>07:35–08:35</strong> | <strong>Higashi-Shinjuku →
 Toyosu</strong></p>
 <ul>
-<li><p>Higashi-Shinjuku (E02) → Tsukishima (E16), Toei Oedo
-Line</p></li>
-<li><p>cambio Tsukishima (Y21) → Toyosu (Y22), Tokyo Metro Yurakucho
-Line</p></li>
+<li><p>Higashi-Shinjuku (E02) → Tsukishima (E16), <span class="line-tag" style="--line-color:#B6007A">Toei Oedo Line</span></p></li>
+<li><p>cambio Tsukishima (Y21) → Toyosu (Y22), <span class="line-tag" style="--line-color:#C1A470">Tokyo Metro Yurakucho Line</span></p></li>
 <li><p>poi ~10 min a piedi.</p></li>
 </ul></li>
 <li><p><strong>09:00–11:00</strong> | <strong>teamLab Planets</strong>
@@ -232,7 +232,7 @@ gli tsukemen</p></li>
 </ul></li>
 <li><p>Dopo cena | Rientro in appartamento</p>
 <ul>
-<li><p>Roppongi Station (E23) → Higashi-Shinjuku (E02) (Toei <span class="line-tag" style="--line-color:#B6007A">Oedo Line</span>,
+<li><p>Roppongi Station (E23) → Higashi-Shinjuku (E02) (<span class="line-tag" style="--line-color:#B6007A">Toei Oedo Line</span>,
 diretta). A piedi a casa</p></li>
 </ul></li>
 </ul><p><strong>NOTA IN CASO DI MALTEMPO:</strong> Azabudai Hills – Central

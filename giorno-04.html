@@ -62,9 +62,12 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "JR Miyajima Ferry", lat: 34.3112221, lng: 132.3048829, address: "1-11-5 Miyajimaguchi, Hatsukaichi, Hiroshima 739-0411, Japan", placeId: "ChIJEyVAcGeiWjURsvzk9FaO6Ao", n: 1},
-{name: "Nijo Castle", lat: 35.0140379, lng: 135.7484258, address: "541 Nijojocho, Nakagyo Ward, Kyoto, 604-8301, Japan", placeId: "ChIJC5srCtQHAWARLy9qkFmHaxA", n: 2},
-{name: "Kyoto Sanjo Shopping Street", lat: 35.0084387, lng: 135.7464002, address: "1-1 Imashinzaikenishicho, Nakagyo Ward, Kyoto, 604-8801, Japan", placeId: "ChIJ5yNcECoGAWARjb3yfogbshY", n: 3}];
+  var pts = [{name: "Guest House Mikuniya", lat: 34.2946943, lng: 132.3213788, address: "Miyajimacho, Hatsukaichi, Hiroshima 739-0523, Japan", placeId: "ChIJi8R-PrawWjURqoi6LcMdZRU", n: 1},
+{name: "Itsukushima Jinja, Miyajima", lat: 34.2959896, lng: 132.3198285, address: "1-1 Miyajimacho, Hatsukaichi, Hiroshima 739-0588, Japan", placeId: "ChIJj23HfgTjGmARkNW10PcocjU", n: 2},
+{name: "JR Miyajima Ferry", lat: 34.3112221, lng: 132.3048829, address: "1-11-5 Miyajimaguchi, Hatsukaichi, Hiroshima 739-0411, Japan", placeId: "ChIJEyVAcGeiWjURsvzk9FaO6Ao", n: 3},
+{name: "Royal Park Canvas Kyoto Nijo", lat: 35.010788, lng: 135.7429088, address: "22-7 Nishinokyo Shokujicho, Nakagyo Ward, Kyoto 604-8381, Japan", placeId: "ChIJ3aaKOJYHAWARP5suJT5XFnI", n: 4},
+{name: "Nijo Castle", lat: 35.0140379, lng: 135.7484258, address: "541 Nijojocho, Nakagyo Ward, Kyoto, 604-8301, Japan", placeId: "ChIJC5srCtQHAWARLy9qkFmHaxA", n: 5},
+{name: "Kyoto Sanjo Shopping Street", lat: 35.0084387, lng: 135.7464002, address: "1-1 Imashinzaikenishicho, Nakagyo Ward, Kyoto, 604-8801, Japan", placeId: "ChIJ5yNcECoGAWARjb3yfogbshY", n: 6}];
   var map = L.map('map-day-4', { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -132,8 +135,7 @@ trasferimento pomeridiano a Kyoto.</p><div class="table-wrap"><table>
 <td>Nijo-jo esterno/Sanjo Shotengai, senza traversare la città</td>
 </tr>
 </tbody>
-</table></div><p><strong>Trasporti:</strong> Ferry Miyajima-Miyajimaguchi; JR Sanyo
-Line; Shinkansen per Shin-Osaka, Limited Express Haruka per Kyoto; JR
+</table></div><p><strong>Trasporti:</strong> Ferry Miyajima-Miyajimaguchi; <span class="line-tag" style="--line-color:#006CC5">JR Sanyo Line</span>; Shinkansen per Shin-Osaka, Limited Express Haruka per Kyoto; JR
 San-in (<span class="line-tag" style="--line-color:#878DDC">Sagano Line</span>) per Nijo Station</p><p><strong>Biglietti e acquisto:</strong> Daisho-in gratuito; Castello
 di Nijo-jo gratuito. I biglietti dei treni sono inclusi nel JR Kansai
 Pass</p><p><mark>La combinazione ferry ~09:40 + Mizuho 604 alle 10:47 da

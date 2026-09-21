@@ -62,11 +62,14 @@
 </div>
 <script>
 (function() {
-  var pts = [{name: "Kiyomizu-dera", lat: 34.9946662, lng: 135.784661, address: "1-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJB_vchdMIAWARujTEUIZlr2I", n: 1},
-{name: "Sannenzaka", lat: 34.9966644, lng: 135.781008, address: "2-211 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJr_gZonkIAWARB1xyACZNUKM", n: 2},
-{name: "Yasaka Shrine", lat: 35.0036559, lng: 135.7785534, address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan", placeId: "ChIJqewQoHkIAWAR6RokWp3Iesc", n: 3},
-{name: "Gion", lat: 35.0037816, lng: 135.777245, address: "Gion, Higashiyama Ward, Kyoto, Japan", placeId: "ChIJZ3vGwcMIAWARtO-YE6oEyw0", n: 4},
-{name: "Pontocho", lat: 35.0064277, lng: 135.7712162, address: "Pontocho, Nakagyo Ward, Kyoto, 604-8012, Japan", placeId: "ChIJCQK3LesIAWAR3CST8e-1YRA", n: 5}];
+  var pts = [{name: "Royal Park Canvas Kyoto Nijo", lat: 35.010788, lng: 135.7429088, address: "22-7 Nishinokyo Shokujicho, Nakagyo Ward, Kyoto 604-8381, Japan", placeId: "ChIJ3aaKOJYHAWARP5suJT5XFnI", n: 1},
+{name: "Kiyomizu-dera", lat: 34.9946662, lng: 135.784661, address: "1-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJB_vchdMIAWARujTEUIZlr2I", n: 2},
+{name: "Sannenzaka", lat: 34.9966644, lng: 135.781008, address: "2-211 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeId: "ChIJr_gZonkIAWARB1xyACZNUKM", n: 3},
+{name: "Hokan-ji (Yasaka Pagoda)", lat: 34.9985591, lng: 135.7791783, address: "388 Kiyomizu, Higashiyama Ward, Kyoto 605-0862, Japan", placeId: "ChIJIcT4YMUIAWARSTUi4EEky7E", n: 4},
+{name: "Kennin-ji", lat: 35.0000363, lng: 135.7735632, address: "584 Komatsucho, Higashiyama Ward, Kyoto 605-0811, Japan", placeId: "ChIJJ3srJMEIAWARUrvFhhmPYH4", n: 5},
+{name: "Gion", lat: 35.0037816, lng: 135.777245, address: "Gion, Higashiyama Ward, Kyoto, Japan", placeId: "ChIJZ3vGwcMIAWARtO-YE6oEyw0", n: 6},
+{name: "Yasaka Shrine", lat: 35.0036559, lng: 135.7785534, address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan", placeId: "ChIJqewQoHkIAWAR6RokWp3Iesc", n: 7},
+{name: "Pontocho", lat: 35.0064277, lng: 135.7712162, address: "Pontocho, Nakagyo Ward, Kyoto, 604-8012, Japan", placeId: "ChIJCQK3LesIAWAR3CST8e-1YRA", n: 8}];
   var map = L.map('map-day-5', { scrollWheelZoom: false });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
