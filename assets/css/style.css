@@ -200,44 +200,25 @@ hr{ border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
   letter-spacing: .02em;
 }
 
-/* ---------------------------------------------------------------- spine */
+/* ------------------------------------------------------ sintesi itinerario */
 .spine-section{ padding: 3.5rem 0 1rem; }
 .spine-section h2{ font-size: 1.7rem; margin-bottom: .2em; }
 .spine-section .lede{ color: var(--ink-soft); max-width: 38rem; margin-bottom: 2.2rem; }
 
-.spine{ border-top: 1px solid var(--line); }
-.spine-row{
-  display: grid;
-  grid-template-columns: 6.5rem 1fr auto;
-  gap: 1.25rem;
-  align-items: center;
-  padding: 1.15rem 0;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: var(--ink);
+.spine-section table{ font-size: .92rem; }
+.spine-section tbody tr.row-link{ cursor: pointer; transition: background .12s ease; }
+.spine-section tbody tr.row-link:hover{ background: var(--vermilion-soft); }
+.spine-section tbody tr.row-link a{
+  color: #1657D8;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
 }
-.spine-row:hover .spine-title{ color: var(--vermilion); }
-.spine-row:hover .spine-arrow{ transform: translateX(3px); opacity: 1; }
-
-.spine-date{ display: flex; flex-direction: column; }
-.spine-date .wd{ font-size: .78rem; color: var(--gold); text-transform: capitalize; font-weight: 600; }
-.spine-date .dm{ font-family: var(--font-display); font-size: 1.35rem; }
-
-.spine-main .spine-title{
-  font-family: var(--font-display); font-size: 1.18rem; display: block;
-  transition: color .15s ease;
-}
-.spine-main .spine-sub{ color: var(--ink-soft); font-size: .93rem; margin-top: .15em; }
-
-.spine-arrow{ opacity: .45; transition: transform .15s ease, opacity .15s ease; color: var(--vermilion); font-size: 1.2rem; }
-
-.spine-row.is-bookend{
-  color: var(--ink-soft);
-  cursor: default;
-}
-.spine-row.is-bookend .spine-title{ font-style: italic; font-family: var(--font-display); }
-.spine-row.is-bookend:hover .spine-title{ color: var(--ink-soft); }
-.spine-row.is-bookend .spine-arrow{ visibility: hidden; }
+.spine-section tbody tr.row-link:hover a{ color: var(--vermilion); }
+.spine-section tbody tr.is-bookend{ color: var(--ink-soft); font-style: italic; }
+.spine-section tbody tr.is-bookend td{ font-style: italic; }
 
 /* ------------------------------------------------------------ info grid */
 .info-section{ padding: 3rem 0 4.5rem; }
